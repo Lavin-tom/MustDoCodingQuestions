@@ -17,7 +17,6 @@ non-decreasing arrays, we get,
 */
 
 //solution
-//not yet completed
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -37,6 +36,8 @@ int main()
     sort_array(arr1,n1,arr2,n2);
     print_array(arr1,n1);
     print_array(arr2,n2);
+    free(arr1);
+    free(arr2);
     return 0;
 }
 void get_array(int arr[],int n)
@@ -49,15 +50,30 @@ void get_array(int arr[],int n)
 }
 void sort_array(int arr1[],int n1,int arr2[],int n2)
 {
-    int temp,s;
-    for(int i=0;i<n1;i++)
+    int temp;
+    //compare first and second array index
+    for(int j=0;j<n2;j++)
     {
-        for(int j=0;j<n2;j++)
+        for(int i=0;i<n1;i++)
         {
             if(arr1[i]>arr2[j])
             {
                 temp = arr1[i];
                 arr1[i]=arr2[j];
+                arr2[j]=temp;
+            }
+        }
+    }
+        
+    //sort second array
+    for(int i=0;i<n2;i++)
+    {
+        for(int j=i;j<n2;j++)
+        {
+            if(arr2[i]>arr2[j])
+            {
+                temp = arr2[i];
+                arr2[i]=arr2[j];
                 arr2[j]=temp;
             }
         }
