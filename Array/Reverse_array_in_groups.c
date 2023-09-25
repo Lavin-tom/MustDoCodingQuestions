@@ -44,26 +44,26 @@ void get_array(int arr[],int n)
 }
 void reverse_array(int arr[],int n,int k)
 {
-    static int index = 0;
-    static int i=0;
-    int j;
-    index = i;
-    for(i=index,j=i+k-1;i<index+k/2;i++,j--)
+    int i=0;
+    while(i<n)
     {
-        if(arr[i]!=arr[j])
+        int start = i;
+        int end = i+k-1;
+        
+        if(end>=n)
         {
-            arr[i]=arr[i]+arr[j];
-            arr[j]=arr[i]-arr[j];
-            arr[i]=arr[i]-arr[j];
+            end = n-1;
         }
+        while(start < end)
+        {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+        i+=k;
     }
-    while(i-1+k>n)
-    {
-        k--;
-    }
-    index = i;
-    if(index<n/2)
-        reverse_array(arr,n,k);
 }
 void print_array(int arr[],int n)
 {
