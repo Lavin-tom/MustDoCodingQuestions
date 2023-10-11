@@ -7,14 +7,19 @@ L 50
 C 100
 D 500
 M 1000
-
 Example 1:
 
 Input:
-s = V
-Output: 5
+s = MCMXCIV
+Output: 1994 
+Explanation: - 
+M = 1000  
+CM = 1000 - 100  
+XC = 100 - 10  
+IV = 5 - 1  
+Decimal Value=1000 + 900 + 90 + 4 = 1994  
 */
-//Not completed
+
 //solution
 
 #include <stdio.h>
@@ -51,13 +56,26 @@ int value(char r)
         return 500;
     if (r == 'M')
         return 1000;
- 
     return -1;
 }
 void find_roman(char roman[])
 {
+    char val1,val2;
+    int temp,sum=0,f,s;
     for(int i=0;i<strlen(roman);i++)
     {
-        printf("%d",value(roman[i]));
+        val1 = roman[i];
+        val2 = roman[i+1];
+        f = value(val1);
+        s = value(val2);
+        // If the current value is greater than or equal 
+        // to the value of the symbol to the right
+        if(f>=s)
+            sum=sum+f;
+        // If the current value is smaller than 
+        // the value of the symbol to the right
+        else
+            sum = sum-s;
     }
+    printf("Decimal value: %d",sum);
 }
