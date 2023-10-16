@@ -13,54 +13,56 @@ Explanation: Given numbers are {3, 30, 34,
 largest value.
 
 */
-//Not completed
 //solution
 
 #include <stdio.h>
 #include <stdlib.h>
-void get_array(int[],int);
-void find_pair(int[],int,int[]);
-void print_array(int[],int);
-int main()
+#include <string.h>
+
+int compare(const void* a, const void* b) 
 {
-    int n;
-    printf("enter size of array\n");
-    scanf("%d",&n);
-    int *arr =(int*)malloc(n*sizeof(int));
-    int *temp =(int*)malloc(n*sizeof(int));
-    get_array(arr,n);
-    
-    find_pair(arr,n,temp);
-    print_array(temp,n);
-    free(arr);
+    char ab[20];
+    char ba[20];
+
+    sprintf(ab, "%d%d", *(int*)a, *(int*)b);
+    sprintf(ba, "%d%d", *(int*)b, *(int*)a);
+
+    return strcmp(ba, ab);
+}
+
+char* largestNumber(int arr[], int n) 
+{
+    char** strArr = (char**)malloc(n * sizeof(char*));
+    for (int i = 0; i < n; i++) {
+        strArr[i] = (char*)malloc(20 * sizeof(char));
+        sprintf(strArr[i], "%d", arr[i]);
+    }
+
+    qsort(strArr, n, sizeof(char*), compare);
+
+    char* result = (char*)malloc(100 * sizeof(char));
+    strcpy(result, "");
+    for (int i = 0; i < n; i++) {
+        strcat(result, strArr[i]);
+    }
+
+    for (int i = 0; i < n; i++) {
+        free(strArr[i]);
+    }
+    free(strArr);
+
+    return result;
+}
+
+int main() 
+{
+    int arr[] = {3, 30, 34, 5, 9};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    char* result = largestNumber(arr, n);
+    printf("%s\n", result); 
+
+    free(result);
+
     return 0;
-}
-void get_array(int arr[],int n)
-{
-    printf("enter array elements\n");
-    for(int i=0;i<n;i++)
-    {
-        scanf("%d",&arr[i]);
-    }
-}
-void find_pair(int arr[],int n,int temp[])
-{
-    int k;
-    for(int i=0;i<n;i++)
-    {
-        int j = arr[i];
-        do
-        {
-            k=j%10;
-            j/=10;
-        }while(j<0);
-        temp[i]=k;
-    }
-}
-void print_array(int arr[],int n)
-{
-    for(int i=0;i<n;i++)
-    {
-        printf("%d ",arr[i]);
-    }
 }
