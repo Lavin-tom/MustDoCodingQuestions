@@ -19,6 +19,11 @@ int main()
     findLeave(array);
     free(array);
 }
+void setLeaves(int array[])
+{
+   for(int i=0;i<k;i++)
+    tree[i]=i+1;
+}
 void getArray(int array[])
 {
     for(int i=0;i<size;i++)
