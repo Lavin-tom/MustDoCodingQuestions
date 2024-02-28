@@ -46,7 +46,12 @@ void findLeave(int array[])
 		int k = array[i];
 		for(int j=0;j<n;j+=k)
 		{
-			
+			tree[j]=0;
 		}
 	}
+  for(int i=0;i<n;i++)
+	  {
+		  if(tree[i]!=0)
+			  printf("%d",tree[i]);
+	  }
 }
