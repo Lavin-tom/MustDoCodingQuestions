@@ -2,7 +2,6 @@
 
 #include<stdio.h>
 #include<stdlib.h>
-void getArray(int[]);
 void setArray(int[]);
 void setTree(int[]);
 void findLeave(int []);
@@ -18,18 +17,12 @@ int main()
     setTree(array);
     findLeave(array);
     free(array);
+    free(tree);
 }
 void setLeaves(int array[])
 {
    for(int i=0;i<k;i++)
     tree[i]=i+1;
-}
-void getArray(int array[])
-{
-    for(int i=0;i<size;i++)
-    {
-        printf("%d ",array[i]);
-    }
 }
 void setArray(int array[])
 {
