@@ -1,14 +1,14 @@
-//not completed
+
 
 #include<stdio.h>
 #include<stdlib.h>
 void setArray(int[]);
 void setTree(int[]);
-void findLeave(int []);
+void findLeave(int[]);
 int k;
 int main()
 {
-	int n;
+int n;
     printf("enter n and k\n");
     scanf("%d %d",&n,&k);
     int *array = (int*)malloc(k*sizeof(int));
