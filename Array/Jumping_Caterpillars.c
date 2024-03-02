@@ -1,42 +1,39 @@
-
-
 #include<stdio.h>
 #include<stdlib.h>
-void setArray(int[]);
-void setTree(int[]);
-void findLeave(int[]);
-int k;
+void setCaterpiller(int[]);
+void setLeaves(int[]);
+void findLeave(int[],int[]);
+int k,n;
 int main()
 {
-int n;
     printf("enter n and k\n");
     scanf("%d %d",&n,&k);
-    int *array = (int*)malloc(k*sizeof(int));
+    int *caterpiller = (int*)malloc(k*sizeof(int));
     int *tree = (int*)malloc(n*sizeof(int));
-    setArray(array);
-    setTree(array);
-    findLeave(array);
-    free(array);
+    setLeaves(tree);
+    setCaterpiller(caterpiller);
+    findLeave(caterpiller,tree);
+    free(caterpiller);
     free(tree);
 }
-void setLeaves(int array[])
+void setLeaves(int tree[])
 {
    for(int i=0;i<k;i++)
     tree[i]=i+1;
 }
-void setArray(int array[])
+void setCaterpiller(int caterpiller[])
 {
     printf("enter array elements\n");
-    for(int i=0;i<n;i++)
+    for(int i=0;i<k;i++)
     {
-        scanf("%d",&array[i]);
+        scanf("%d",&caterpiller[i]);
     }
 }
-void findLeave(int array[])
+void findLeave(int caterpiller[],int tree[])
 {
 	for(int i=0;i<n;i++)
 	{
-		int k = array[i];
+		int k = caterpiller[i];
 		for(int j=0;j<n;j+=k)
 		{
 			tree[j]=0;
