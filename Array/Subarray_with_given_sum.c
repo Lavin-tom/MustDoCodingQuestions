@@ -26,6 +26,7 @@ int main()
     int *arr =(int*)malloc(n*sizeof(int));
     get_array(arr,n);
     find_index(arr,n,sum);
+    free(arr);
     return 0;
 }
 void get_array(int arr[],int n)
